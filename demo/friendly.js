@@ -13,5 +13,20 @@ const square = (size) => [
   Pen.up()
 ];
 
-const smallSquare = square(50);
-const bigSquare = square(200);
+const turtle = Turtle.create([
+  Pen.down(),
+  Move.forward(50),
+  Pen.up(),
+  Move.forward(50),
+  square(50)
+]);
+
+/** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
+ *   -
+ *  | |
+ *   -
+ *
+ *  |
+ */
+
+turtle.drawTo(new Paper(), 50, 50);

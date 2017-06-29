@@ -1,6 +1,6 @@
 // @flow
 
-const { Pen, Move, Rotate } = require('./lib/commands');
+const { Pen, Move, Rotate } = require('./lib/instructions');
 
 module.exports = {
   Turtle: require('./lib/turtle'),
