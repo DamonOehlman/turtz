@@ -1,7 +1,11 @@
 // @flow
 
-import {
-  Turtle
-} from './lib/turtle';
+const { Pen, Move, Rotate } = require('./lib/commands');
 
-export Turtle;
+module.exports = {
+  Turtle: require('./lib/turtle'),
+  Pen,
+  Move,
+  Rotate,
+  Turn: Rotate // alias Rotate for an alternative syntax for simpler terminology
+};

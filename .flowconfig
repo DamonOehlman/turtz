@@ -4,8 +4,9 @@
 [include]
 *.js
 lib/**/*.js
+demo/*.js
 
 [libs]
 
 [options]
-strict = false
+all=false

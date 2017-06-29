@@ -6,19 +6,20 @@
   "author": "Damon Oehlman <damon.oehlman@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babelify": "^7.3.0",
-    "bankai": "^7.6.1",
     "bde": "^1.0.0",
     "browserify": "^14.3.0",
-    "unflowify": "^1.0.1"
+    "flow-bin": "^0.48.0"
   },
   "scripts": {
     "example": "bde demo/"
   },
   "browserify": {
     "transforms": [
-      "unflowify",
-      "babelify"
+      "unflowify"
     ]
+  },
+  "dependencies": {
+    "unflowify": "^1.0.1",
+    "lodash": "^4.17.4"
   }
 }
