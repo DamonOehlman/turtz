@@ -1,6 +1,12 @@
 // @flow
 
-const { Turtle, Pen, Move, Turn } = require('..');
+const {
+  Turtle,
+  Pen,
+  Move,
+  Turn,
+  CanvasDrawingSurface
+} = require('..');
 const { times } = require('../logic');
 
 const square = (size) => [
@@ -29,4 +35,4 @@ const turtle = Turtle.create([
  *  |
  */
 
-turtle.drawTo(new Paper(), 50, 50);
+turtle.drawTo(CanvasDrawingSurface.create(), 50, 50);

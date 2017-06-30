@@ -1,9 +1,12 @@
 // @flow
 
 const { Pen, Move, Rotate } = require('./lib/instructions');
+const { Turtle } = require('./lib/turtle');
+const { CanvasDrawingSurface } = require('./lib/canvas');
 
 module.exports = {
-  Turtle: require('./lib/turtle'),
+  Turtle,
+  CanvasDrawingSurface,
   Pen,
   Move,
   Rotate,
