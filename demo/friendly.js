@@ -29,11 +29,13 @@ const turtle = Turtle.create([
 
 window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.createElement('canvas');
-  canvas.width = document.body.clientWidth;
-  canvas.height = document.body.clientHeight;
-  document.body.appendChild(canvas);
+  if (document.body) {
+    canvas.width = document.body.clientWidth;
+    canvas.height = document.body.clientHeight;
+    document.body.appendChild(canvas);
+  }
 
-  const surface = CanvasDrawingSurface.create(canvas);
+  const surface = CanvasDrawingSurface.create({ target: canvas });
 
   /** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
    *   -
