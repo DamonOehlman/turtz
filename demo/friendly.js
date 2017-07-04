@@ -27,12 +27,22 @@ const turtle = Turtle.create([
   square(50)
 ]);
 
-/** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
- *   -
- *  | |
- *   -
- *
- *  |
- */
+window.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.createElement('canvas');
+  canvas.width = document.body.clientWidth;
+  canvas.height = document.body.clientHeight;
+  document.body.appendChild(canvas);
 
-turtle.drawTo(CanvasDrawingSurface.create(), 50, 50);
+  const surface = CanvasDrawingSurface.create(canvas);
+
+  /** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
+   *   -
+   *  | |
+   *   -
+   *
+   *  |
+   */
+
+  turtle.drawTo(surface, 50, 50);
+
+});
