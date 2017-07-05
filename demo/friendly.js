@@ -45,6 +45,6 @@ window.addEventListener('DOMContentLoaded', () => {
    *  |
    */
 
-  turtle.drawTo(surface, 50, 50);
+  turtle.drawTo(surface, 0, 0);
 
 });
