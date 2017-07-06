@@ -1,11 +1,12 @@
 // @flow
 
 const {
-  Turtle,
   Pen,
   Move,
   Turn,
-  CanvasDrawingSurface
+  Path,
+  CanvasDrawingSurface,
+  Application
 } = require('..');
 const { times } = require('../logic');
 
@@ -19,36 +20,26 @@ const square = (size) => [
   Pen.up()
 ];
 
-const turtle = Turtle.create([
+const lineAndSquare = [
   Pen.down(),
   Move.forward(50),
   Pen.up(),
   Move.forward(50),
   square(50)
-]);
+];
 
-// TODO: encapsulate all of this in a draw helper
 window.addEventListener('DOMContentLoaded', () => {
-  const canvas = document.createElement('canvas');
-  if (document.body) {
-    canvas.width = document.body.clientWidth;
-    canvas.height = document.body.clientHeight;
-    document.body.appendChild(canvas);
-  }
+  Application.create({}, surface => {
+    const path = Path.build(lineAndSquare);
 
-  const surface = CanvasDrawingSurface.create({ target: canvas });
+    /** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
+     *   -
+     *  | |
+     *   -
+     *
+     *  |
+     */
 
-  surface.prepare();
-
-  /** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
-   *   -
-   *  | |
-   *   -
-   *
-   *  |
-   */
-
-  turtle.drawTo(surface, 0, 0);
-
-  surface.finalize();
+    surface.draw(path, 50, 50);
+  });
 });
