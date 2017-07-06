@@ -27,6 +27,7 @@ const turtle = Turtle.create([
   square(50)
 ]);
 
+// TODO: encapsulate all of this in a draw helper
 window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.createElement('canvas');
   if (document.body) {
@@ -36,6 +37,8 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   const surface = CanvasDrawingSurface.create({ target: canvas });
+
+  surface.prepare();
 
   /** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
    *   -
@@ -47,4 +50,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
   turtle.drawTo(surface, 0, 0);
 
+  surface.finalize();
 });
