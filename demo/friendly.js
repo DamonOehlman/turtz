@@ -23,7 +23,9 @@ const square = (size) => [
 
 const lineAndSquare = [
   Pen.down(),
+  Turn.right(45),
   Move.forward(50),
+  Turn.left(45),
   Pen.up(),
   Move.forward(50),
   square(50)
