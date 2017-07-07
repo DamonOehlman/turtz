@@ -11,7 +11,7 @@ import type {
  * Execute an instruction builder <tt>count</tt> times. Any arguments (untyped) that
  * should be supplied to the builder can be passed in the rest parameters.
  */
-function times(count: number, builder: InstructionBuilder): NestedInstructionList {
+function repeat(count: number, builder: InstructionBuilder): NestedInstructionList {
   let items = [];
   for (let index = 0; index < count; index += 1) {
     items = items.concat(builder());
@@ -26,5 +26,5 @@ function times(count: number, builder: InstructionBuilder): NestedInstructionLis
 
 
 module.exports = {
-  times
+  repeat
 };

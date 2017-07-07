@@ -13,7 +13,7 @@ const { times } = require('../logic');
 
 const square = (size) => [
   Pen.down(),
-  times(4, () => [
+  repeat(4, () => [
       Move.forward(size),
       Turn.right(90)
     ]
@@ -23,7 +23,7 @@ const square = (size) => [
 
 const triangle = (size) => [
   Pen.down(),
-  times(3, () => [
+  repeat(3, () => [
       Move.forward(size),
       Turn.right(360 / 3)
     ]
@@ -33,7 +33,7 @@ const triangle = (size) => [
 
 const poly = (sides, size) => [
   Pen.down(),
-  times(sides, () => [
+  repeat(sides, () => [
     Move.forward(size),
     Turn.right(360 / sides)
   ]),
