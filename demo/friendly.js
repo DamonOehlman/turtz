@@ -8,6 +8,7 @@ const {
   CanvasDrawingSurface,
   Application
 } = require('..');
+
 const { times } = require('../logic');
 
 const square = (size) => [
@@ -40,6 +41,6 @@ window.addEventListener('DOMContentLoaded', () => {
      *  |
      */
 
-    surface.draw(path, 50, 50);
+    surface.draw(path, 0, 0);
   });
 });
