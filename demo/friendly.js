@@ -9,7 +9,7 @@ const {
   Application
 } = require('..');
 
-const { times } = require('../logic');
+const { repeat } = require('../logic');
 
 const square = (size) => [
   Pen.down(),
