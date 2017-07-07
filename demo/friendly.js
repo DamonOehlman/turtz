@@ -31,7 +31,7 @@ const lineAndSquare = [
 
 window.addEventListener('DOMContentLoaded', () => {
   Application.create({}, surface => {
-    const path = Path.build(lineAndSquare);
+    const path = Path.fromInstructions(lineAndSquare);
 
     /** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
      *   -
