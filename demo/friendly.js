@@ -13,27 +13,25 @@ const { repeat } = require('../logic');
 
 const square = (size) => [
   Pen.down(),
-  repeat(4, () => [
-      Move.forward(size),
-      Turn.right(90)
-    ]
-  ),
+  repeat(4, [
+    Move.forward(size),
+    Turn.right(90)
+  ]),
   Pen.up()
 ];
 
 const triangle = (size) => [
   Pen.down(),
-  repeat(3, () => [
+  repeat(3, [
       Move.forward(size),
       Turn.right(360 / 3)
-    ]
-  ),
+  ]),
   Pen.up()
 ];
 
 const poly = (sides, size) => [
   Pen.down(),
-  repeat(sides, () => [
+  repeat(sides, [
     Move.forward(size),
     Turn.right(360 / sides)
   ]),
@@ -61,6 +59,6 @@ window.addEventListener('DOMContentLoaded', () => {
      */
 
     // surface.draw(path, 0, 0);
-    surface.draw(poly(9, 50), 0, 0);
+    return surface.draw(poly(9, 50), 0, 0);
   });
 });
