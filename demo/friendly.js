@@ -59,6 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
      */
 
     // surface.draw(path, 0, 0);
+    surface.draw(square(50), 0, 0);
     return surface.draw(poly(9, 50), 0, 0);
   });
 });
