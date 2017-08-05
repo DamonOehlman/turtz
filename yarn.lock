@@ -96,6 +96,10 @@ brace-expansion@^1.0.0:
     balanced-match "^0.4.1"
     concat-map "0.0.1"
 
+bresenham@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/bresenham/-/bresenham-0.0.3.tgz#abdab9e5b194e27c757cd314d8444314f299877a"
+
 brfs@^1.4.0:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/brfs/-/brfs-1.4.3.tgz#db675d6f5e923e6df087fca5859c9090aaed3216"
@@ -403,6 +407,19 @@ domain-browser@~1.1.0:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
+drawille-canvas@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/drawille-canvas/-/drawille-canvas-1.2.0.tgz#3a247f665c8446cbf5b1c01ae6cb11d82a4d27a1"
+  dependencies:
+    bresenham "0.0.3"
+    drawille "^1.1.0"
+    earcut "^2.1.1"
+    gl-matrix "^2.1.0"
+
+drawille@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/drawille/-/drawille-1.1.0.tgz#5f7cec246d31b5a10044be84cedd9a486fa31ced"
+
 duplexer2@^0.1.2, duplexer2@~0.1.0, duplexer2@~0.1.2:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
@@ -414,6 +431,10 @@ duplexer2@~0.0.2:
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
   dependencies:
     readable-stream "~1.1.9"
+
+earcut@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.1.1.tgz#157634e5f3ebb42224e475016e86a5b6ce556b45"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -511,6 +532,10 @@ fs.realpath@^1.0.0:
 function-bind@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
+
+gl-matrix@^2.1.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/gl-matrix/-/gl-matrix-2.4.0.tgz#2089b13301a29eec822d9d99dffc1f78ee9a3c50"
 
 glob@^7.1.0:
   version "7.1.1"

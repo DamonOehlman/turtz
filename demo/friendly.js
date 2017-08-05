@@ -11,14 +11,16 @@ const {
 
 const { repeat } = require('../logic');
 
-const square = (size) => [
-  Pen.down(),
-  repeat(4, [
-    Move.forward(size),
-    Turn.right(90)
-  ]),
-  Pen.up()
-];
+function square(size: number) {
+  return [
+    Pen.down(),
+    repeat(4, [
+      Move.forward(size),
+      Turn.right(90)
+    ]),
+    Pen.up()
+  ];
+}
 
 const triangle = (size) => [
   Pen.down(),
@@ -43,25 +45,15 @@ const lineAndSquare = [
   Turn.right(90),
   Move.forward(50),
   Turn.left(45),
-  poly(4, 50),
+  square(50),
 ];
 
 window.addEventListener('DOMContentLoaded', () => {
   Application.create({}, surface => {
-    // const path = Path.fromInstructions(lineAndSquare);
-
-    /** EXPECTED OUTPUT SHOULD LOOK SOMETHING LIKE (TODO: use unicode)
-     *   -
-     *  | |
-     *   -
-     *
-     *  |
-     */
-
-    // surface.draw(path, 0, 0);
     return [
+      surface.draw(lineAndSquare, 0, -100),
       surface.draw(square(50), -25, -25),
-      surface.draw(poly(9, 50), 25, 25)
+      surface.draw(poly(10, 50), 25, 25)
     ];
   });
 });
