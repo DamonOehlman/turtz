@@ -5,8 +5,7 @@ const {
   Move,
   Turn,
   Path,
-  CanvasDrawingSurface,
-  Application
+  Surface
 } = require('..');
 
 const { repeat } = require('../logic');
@@ -48,12 +47,10 @@ const lineAndSquare = [
   square(50),
 ];
 
-window.addEventListener('DOMContentLoaded', () => {
-  Application.create({}, surface => {
-    return [
-      surface.draw(lineAndSquare, 0, -100),
-      surface.draw(square(50), -25, -25),
-      surface.draw(poly(10, 50), 25, 25)
-    ];
-  });
+Surface.create({}, surface => {
+  return [
+    surface.draw(lineAndSquare, 0, -100),
+    surface.draw(square(50), -25, -25),
+    surface.draw(poly(10, 50), 25, 25)
+  ];
 });

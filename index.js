@@ -2,13 +2,13 @@
 
 const { Pen, Move, Rotate } = require('./lib/instructions');
 const { CanvasDrawingSurface } = require('./lib/canvas');
-const { Application } = require('./lib/application');
+const { Surface } = require('./lib/surface');
 const { Path } = require('./lib/path');
 
 module.exports = {
   Path,
   CanvasDrawingSurface,
-  Application,
+  Surface,
   Pen,
   Move,
   Rotate,
