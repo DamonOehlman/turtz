@@ -35,7 +35,65 @@ decided it should have the following attributes:
 The following is a rather long code sample, that I'll break into smaller parts in
 the future:
 
-ERROR: could not find: 
+```js
+// @flow
+
+const {
+  Pen,
+  Move,
+  Turn,
+  Path,
+  Surface
+} = require('turtz');
+
+const { repeat } = require('turtz/logic');
+
+function square(size: number) {
+  return [
+    Pen.down(),
+    repeat(4, [
+      Move.forward(size),
+      Turn.right(90)
+    ]),
+    Pen.up()
+  ];
+}
+
+const triangle = (size) => [
+  Pen.down(),
+  repeat(3, [
+      Move.forward(size),
+      Turn.right(360 / 3)
+  ]),
+  Pen.up()
+];
+
+const poly = (sides, size) => [
+  Pen.down(),
+  repeat(sides, [
+    Move.forward(size),
+    Turn.right(360 / sides)
+  ]),
+  Pen.up()
+];
+
+const lineAndSquare = [
+  Pen.down(),
+  Turn.right(90),
+  Move.forward(50),
+  Turn.left(45),
+  square(50),
+];
+
+Surface.create({}, surface => {
+  return [
+    surface.draw(lineAndSquare, 0, -100),
+    surface.draw(square(50), -25, -25),
+    surface.draw(poly(10, 50), 25, 25)
+  ];
+});
+
+```
 
 This generates the following output:
 

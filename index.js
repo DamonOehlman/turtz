@@ -38,7 +38,7 @@ decided it should have the following attributes:
 The following is a rather long code sample, that I'll break into smaller parts in
 the future:
 
-<<< examples/friendly.js
+<<< demo/friendly.js
 
 This generates the following output:
 
