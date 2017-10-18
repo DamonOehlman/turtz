@@ -4,6 +4,7 @@ const { Pen, Move, Rotate } = require('./lib/instructions');
 const { CanvasDrawingSurface } = require('./lib/canvas');
 const { Surface } = require('./lib/surface');
 const { Path } = require('./lib/path');
+const { Commands } = require('./lib/commands');
 
 /**
 
@@ -47,6 +48,7 @@ This generates the following output:
 **/
 
 module.exports = {
+  Commands,
   Path,
   CanvasDrawingSurface,
   Surface,

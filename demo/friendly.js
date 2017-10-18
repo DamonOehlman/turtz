@@ -5,51 +5,50 @@ const {
   Move,
   Turn,
   Path,
-  Surface
+  Surface,
+  Commands
 } = require('..');
 
 const { repeat } = require('../logic');
 
-function square(size: number) {
-  return [
-    Pen.down(),
-    repeat(4, [
-      Move.forward(size),
-      Turn.right(90)
-    ]),
-    Pen.up()
-  ];
-}
+const square = (size: number) => Commands.create([
+  Pen.down(),
+  repeat(4, [
+    Move.forward(size),
+    Turn.right(90)
+  ]),
+  Pen.up()
+]);
 
-const triangle = (size) => [
+const triangle = (size: number) => Commands.create([
   Pen.down(),
   repeat(3, [
       Move.forward(size),
       Turn.right(360 / 3)
   ]),
   Pen.up()
-];
+]);
 
-const poly = (sides, size) => [
+const poly = (sides: number, size: number) => Commands.create([
   Pen.down(),
   repeat(sides, [
     Move.forward(size),
     Turn.right(360 / sides)
   ]),
   Pen.up()
-];
+]);
 
-const lineAndSquare = [
+const lineAndSquare = () => Commands.create([
   Pen.down(),
   Turn.right(90),
   Move.forward(50),
   Turn.left(45),
   square(50),
-];
+]);
 
 Surface.create({}, surface => {
   return [
-    surface.draw(lineAndSquare, 0, -100),
+    surface.draw(lineAndSquare(), 0, -100),
     surface.draw(square(50), -25, -25),
     surface.draw(poly(10, 50), 25, 25)
   ];
