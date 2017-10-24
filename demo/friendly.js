@@ -5,8 +5,9 @@ const {
   Move,
   Turn,
   Path,
+  Commands,
   Surface,
-  Commands
+  Canvas
 } = require('..');
 
 const { repeat } = require('../logic');
@@ -46,10 +47,13 @@ const lineAndSquare = () => Commands.create([
   square(50),
 ]);
 
-Surface.create({}, surface => {
-  return [
-    surface.draw(lineAndSquare(), 0, -100),
-    surface.draw(square(50), -25, -25),
-    surface.draw(poly(10, 50), 25, 25)
-  ];
-});
+Canvas.create({})
+  .then(surface => surface.draw(lineAndSquare(), 0, -100));
+
+// Surface.create({}, surface => {
+//   return [
+//     surface.draw(lineAndSquare(), 0, -100),
+//     surface.draw(square(50), -25, -25),
+//     surface.draw(poly(10, 50), 25, 25)
+//   ];
+// });
