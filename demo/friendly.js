@@ -48,12 +48,6 @@ const lineAndSquare = () => Commands.create([
 ]);
 
 Canvas.create({})
-  .then(surface => surface.draw(lineAndSquare(), 0, -100));
-
-// Surface.create({}, surface => {
-//   return [
-//     surface.draw(lineAndSquare(), 0, -100),
-//     surface.draw(square(50), -25, -25),
-//     surface.draw(poly(10, 50), 25, 25)
-//   ];
-// });
+  .then(surface => surface.draw(lineAndSquare(), 0, -100))
+  .then(surface => surface.draw(square(50), -25, -25))
+  .then(surface => surface.draw(poly(10, 50), 25, 25));
