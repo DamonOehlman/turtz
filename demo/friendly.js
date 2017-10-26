@@ -6,7 +6,6 @@ const {
   Turn,
   Path,
   Commands,
-  Surface,
   Canvas
 } = require('..');
 
@@ -48,7 +47,7 @@ const lineAndSquare = () => Commands.create([
 ]);
 
 async function main() {
-  const surface = await Canvas.create({});
+  const surface: Canvas = await Canvas.create({});
   const previousPaths = [];
 
   previousPaths.push(await surface.draw(lineAndSquare(), { x: 0, y: -100 }));
