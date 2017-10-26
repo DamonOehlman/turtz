@@ -47,7 +47,13 @@ const lineAndSquare = () => Commands.create([
   square(50),
 ]);
 
-Canvas.create({})
-  .then(surface => surface.draw(lineAndSquare(), 0, -100))
-  .then(surface => surface.draw(square(50), -25, -25))
-  .then(surface => surface.draw(poly(10, 50), 25, 25));
+async function main() {
+  const surface = await Canvas.create({});
+  const previousPaths = [];
+
+  previousPaths.push(await surface.draw(lineAndSquare(), { x: 0, y: -100 }));
+  previousPaths.push(await surface.draw(square(50), { x: -25, y: -25 }));
+  previousPaths.push(await surface.draw(poly(10, 50), { x: 25, y: 25 }));
+}
+
+main();

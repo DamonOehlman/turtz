@@ -2,7 +2,6 @@
 
 const { Pen, Move, Rotate } = require('./lib/instructions');
 const { Canvas } = require('./lib/canvas');
-const { Surface } = require('./lib/surface');
 const { Path } = require('./lib/path');
 const { Commands } = require('./lib/commands');
 
@@ -51,7 +50,6 @@ module.exports = {
   Commands,
   Path,
   Canvas,
-  Surface,
   Pen,
   Move,
   Rotate,
