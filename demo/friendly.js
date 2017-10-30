@@ -47,7 +47,7 @@ const lineAndSquare = () => Commands.create([
 ]);
 
 async function main() {
-  const surface: Canvas = await Canvas.create();
+  const surface: Canvas = await Canvas.create({ fps: 120 });
 
   // await surface.draw(lineAndSquare(), { x: 0, y: -100 });
   await surface.draw(lineAndSquare(), { x: 0, y: -100 });
