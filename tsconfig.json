@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "importHelpers": false,
-    "lib": [
-      "es2016"
-    ],
+    "lib": ["es2016"],
     "moduleResolution": "node",
     "outDir": "target",
     "strict": true,
@@ -12,7 +10,5 @@
     "target": "es6",
     "sourceMap": false
   },
-  "include": [
-    "pipelines"
-  ]
+  "include": ["index.ts"]
 }
