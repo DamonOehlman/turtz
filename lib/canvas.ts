@@ -1,64 +1,55 @@
-// @flow
-
-const { Path } = require('./path');
-const { Geometry } = require('./geometry');
-const { Animator } = require('./animator');
-
 const DEFAULT_SPEED: number = 150;
 const DEFAULT_FPS: number = 60;
 
-import type {
-  PathComponent,
-  PathOrInstructions
-} from './path';
+import { Path, PathComponent, PathOrInstructions } from './path';
 
-import type {
-  Position
-} from './geometry';
+import { Geometry, Position } from './geometry';
+
+import { Animator } from './animator';
 
 export type CanvasContructorOptions = {
-  turtleImage?: Image,
-  retainDrawn: boolean,
-  fps: number
+  turtleImage?: HTMLImageElement;
+  retainDrawn: boolean;
+  fps: number;
 };
 
 export type CanvasFactoryOptions = {
-  selector?: string,
-  target?: HTMLElement,
-  scope?: HTMLElement, // defaults to document
-  retainDrawn?: boolean,
-  fps?: number
+  selector?: string;
+  target?: HTMLElement;
+  scope?: HTMLElement; // defaults to document
+  retainDrawn?: boolean;
+  fps?: number;
 };
 
 export type CanvasDrawOptions = {
-  x: number,
-  y: number,
-  speed?: number
+  x: number;
+  y: number;
+  speed?: number;
 };
 
 type PathDrawState = {
-  elapsed?: number,
-  completed: boolean
+  elapsed?: number;
+  completed: boolean;
 };
 
 type PathDrawOptions = {
-  origin: Position,
-  path: Path,
-  x: number,
-  y: number,
-  speed: number
+  origin: Position;
+  path: Path;
+  x: number;
+  y: number;
+  speed: number;
 };
 
 type FindTargetOptions = {
-  selector?: string,
-  target?: HTMLElement,
-  scope?: HTMLElement
+  selector?: string;
+  target?: HTMLElement;
+  scope?: HTMLElement;
 };
 
-class Canvas {
+export class Canvas {
   context: CanvasRenderingContext2D;
   origin: Position;
-  previousPaths: ?Array<CanvasPath>;
+  previousPaths?: Array<CanvasPath>;
   retainDrawn: boolean;
   fps: number;
 
@@ -66,11 +57,8 @@ class Canvas {
     this.context = context;
 
     // derive the origin using the source canvas width and height
-    this.origin = [
-      context.canvas.width / 2,
-      context.canvas.height / 2
-    ];
-    
+    this.origin = [context.canvas.width / 2, context.canvas.height / 2];
+
     if (options && !!options.retainDrawn) {
       this.previousPaths = [];
     }
@@ -78,7 +66,7 @@ class Canvas {
     this.fps = options.fps;
   }
 
-  static create(options: ?CanvasFactoryOptions): Canvas {
+  static create(options?: CanvasFactoryOptions): Canvas {
     let target = options ? Canvas.findTargetForOptions(options) : null;
     if (!target) {
       target = Canvas.createDefault2DCanvas();
@@ -88,7 +76,7 @@ class Canvas {
     if (!context) {
       throw new Error('Could not get 2D rendering context for canvas element');
     }
-    
+
     const retainDrawn = options && options.retainDrawn ? !!options.retainDrawn : true;
     return new Canvas(context, {
       retainDrawn,
@@ -96,7 +84,7 @@ class Canvas {
     });
   }
 
-  static findTargetForOptions({ target, selector, scope }: FindTargetOptions): ?HTMLCanvasElement {
+  static findTargetForOptions({ target, selector, scope }: FindTargetOptions): HTMLCanvasElement | null {
     if (target) {
       if (target instanceof HTMLCanvasElement) {
         return target;
@@ -126,7 +114,7 @@ class Canvas {
     return canvas;
   }
 
-  async draw(input: PathOrInstructions, opts: ?CanvasDrawOptions): Promise<CanvasPath> {
+  async draw(input: PathOrInstructions, opts?: CanvasDrawOptions): Promise<CanvasPath> {
     const path = Path.ensurePath(input);
     const canvasPath = new CanvasPath({
       origin: this.origin,
@@ -145,7 +133,7 @@ class Canvas {
       const tick = performance.now();
       const delta = await Animator.nextFrame(this.fps, tick);
       Canvas.reset(this.context, this.origin);
-      
+
       // draw the previous paths
       if (this.previousPaths) {
         this.previousPaths.forEach(previousPath => {
@@ -164,12 +152,7 @@ class Canvas {
   }
 
   static reset(context: CanvasRenderingContext2D, origin: Position) {
-    context.clearRect(
-      0,
-      0,
-      context.canvas.width,
-      context.canvas.height
-    );
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
     context.beginPath();
     context.moveTo(0, origin[1]);
@@ -196,7 +179,7 @@ class CanvasPath {
   y: number;
   speed: number;
   totalTime: number;
-  
+
   constructor({ origin, path, x, y, speed }: PathDrawOptions) {
     this.origin = origin;
     this.components = path.components.slice();
@@ -206,12 +189,7 @@ class CanvasPath {
     this.totalTime = Math.floor(path.length / speed) * 1000;
   }
 
-  draw(
-    context: CanvasRenderingContext2D,
-    turtle: ?CanvasTurtle,
-    delta: number,
-    state: PathDrawState
-  ): PathDrawState {
+  draw(context: CanvasRenderingContext2D, turtle?: CanvasTurtle, delta: number, state: PathDrawState): PathDrawState {
     const newState = {
       elapsed: state.completed ? this.totalTime : (state.elapsed || 0) + delta,
       completed: state.completed
@@ -224,10 +202,10 @@ class CanvasPath {
 
     // determine the length to draw in this draw routine
     const lengthToDraw = this.length * (newState.elapsed / this.totalTime);
-    let lengthDrawn: number  = 0;
+    let lengthDrawn: number = 0;
     let lastHeading: number = 0;
     let lastPosition: Position = [0, 0];
-    
+
     // set the initial position to the x and y value
     context.beginPath();
     context.moveTo(origin[0], origin[1]);
@@ -254,17 +232,11 @@ class CanvasPath {
 
       switch (component.type) {
         case 'M':
-          context.moveTo(
-            origin[0] + targetPosition[0],
-            origin[1] + targetPosition[1]
-          );
+          context.moveTo(origin[0] + targetPosition[0], origin[1] + targetPosition[1]);
           break;
 
         case 'L':
-          context.lineTo(
-            origin[0] + targetPosition[0],
-            origin[1] + targetPosition[1]
-          );
+          context.lineTo(origin[0] + targetPosition[0], origin[1] + targetPosition[1]);
           break;
 
         default:
@@ -314,7 +286,3 @@ class CanvasTurtle {
     }
   }
 }
-
-module.exports = {
-  Canvas
-};

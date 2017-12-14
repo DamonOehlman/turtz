@@ -1,6 +1,4 @@
-// @flow
-
-class Animator {
+export class Animator {
   static async nextFrame(fps: number, lastTick: number): Promise<number> {
     const requiredDelta = Math.floor(1000 / fps);
     let currentTick;
@@ -16,7 +14,3 @@ class Animator {
     return new Promise(resolve => window.requestAnimationFrame(resolve));
   }
 }
-
-module.exports = {
-  Animator
-};

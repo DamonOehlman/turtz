@@ -1,25 +1,14 @@
-// @flow
-
-const { denest } = require('./instructions');
-const { Geometry } = require('./geometry');
-
-import type {
-  Instruction,
-  NestedInstructionList
-} from './instructions';
-
-import type {
-  Position
-} from './geometry';
+import { Instruction, NestedInstructionList, denest } from './instructions';
+import { Position, Geometry } from './geometry';
 
 export type MoveToComponent = {
-  type: 'M',
-  position: Position
+  type: 'M';
+  position: Position;
 };
 
 export type LineToComponent = {
-  type: 'L',
-  position: Position
+  type: 'L';
+  position: Position;
 };
 
 export type PathComponent = MoveToComponent | LineToComponent;
@@ -27,7 +16,7 @@ export type PathOrInstructions = Path | NestedInstructionList;
 
 // PATH
 
-class Path {
+export class Path {
   components: Array<PathComponent>;
   length: number;
 
@@ -63,7 +52,7 @@ class Path {
 
 // PATH BUILDER
 
-class PathBuilder {
+export class PathBuilder {
   static line(position: Position): LineToComponent {
     return {
       type: 'L',
@@ -136,18 +125,11 @@ function calculateLength(components: Array<PathComponent>): number {
   const positions = [[0, 0]].concat(components.map(input => input.position));
   return positions.reduce((memo, position, index) => {
     if (index > 0) {
-      const deltaX = position[0] - positions[index-1][0];
-      const deltaY = position[1] - positions[index-1][1];
-      return memo + Math.sqrt(deltaX*deltaX + deltaY*deltaY);
+      const deltaX = position[0] - positions[index - 1][0];
+      const deltaY = position[1] - positions[index - 1][1];
+      return memo + Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
     return memo;
   }, 0);
 }
-
-
-// EXPORTS
-
-module.exports = {
-  Path
-};

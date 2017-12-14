@@ -1,0 +1,102 @@
+{
+  "extends": [
+    "tslint-eslint-rules"
+  ],
+  "rulesDirectory": [
+    "node_modules/@canva/tslint-rules/dist",
+    "node_modules/tslint-react/rules"
+  ],
+  "rules": {
+    // TypeScript specific
+    "adjacent-overload-signatures": true,
+    "no-empty-interface": true,
+    "no-reference": true,
+    "no-var-requires": true,
+    "typedef-whitespace": [true, {
+      "call-signature": "nospace",
+      "index-signature": "nospace",
+      "parameter": "nospace",
+      "property-declaration": "nospace",
+      "variable-declaration": "nospace"
+    }, {
+      "call-signature": "onespace",
+      "index-signature": "onespace",
+      "parameter": "onespace",
+      "property-declaration": "onespace",
+      "variable-declaration": "onespace"
+    }],
+
+    // React specific
+    "jsx-boolean-value": "always",
+    "jsx-no-bind": true,
+    "jsx-no-lambda": true,
+    "jsx-self-close": true,
+
+    // Jest specific
+    "ban": [
+      true,
+      ["describe", "only", "Don't focus tests"],
+      ["it", "only", "Don't focus tests"]
+    ],
+
+    // Functionality
+    "curly": true,
+    "label-position": true,
+    "no-arg": true,
+    "no-console": true,
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-invalid-this": true,
+    "no-misused-new": true,
+    "no-string-throw": true,
+    "no-unsafe-finally": true,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "no-var-keyword": true,
+    "radix": true,
+    "switch-default": true,
+    "typeof-compare": true,
+    "use-isnan": true,
+
+    // Maintainability
+    "eofline": true,
+    "indent": [true, "spaces"],
+    "linebreak-style": [true, "LF"],
+    "no-require-imports": true,
+    "no-unused-variable": true,
+    "prefer-const": true,
+    "trailing-comma": [true, {
+      "multiline": "always",
+      "singleline": "never"
+    }],
+
+    // Style
+    "array-type": [true, "array"],
+    "arrow-return-shorthand": true,
+    "callable-types": true,
+    "class-name": true,
+    "import-spacing": true,
+    "jsdoc-format": true,
+    "new-parens": true,
+    "no-angle-bracket-type-assertion": true,
+    "no-consecutive-blank-lines": true,
+    "no-unnecessary-initializer": true,
+    "object-curly-spacing": true,
+    "object-literal-shorthand": true,
+    "one-line": [true, "check-catch", "check-else", "check-finally", "check-open-brace",
+        "check-whitespace"],
+    "ordered-imports": [true, {
+      "import-sources-order": "case-insensitive",
+      "named-imports-order": "case-insensitive"
+    }],
+    "prefer-method-signature": true,
+    "prefer-object-spread": true,
+    "quotemark": [true, "single", "jsx-double", "avoid-escape", "avoid-template"],
+    "semicolon": [true, "ignore-bound-class-methods"],
+    "variable-name": [true, "ban-keywords"],
+    "whitespace": [true, "check-branch", "check-decl", "check-module", "check-operator",
+        "check-preblock", "check-separator", "check-type", "check-typecast"]
+  }
+}

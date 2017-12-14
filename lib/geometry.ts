@@ -1,11 +1,9 @@
-// @flow
-
-export type Position = [number,number];
+export type Position = [number, number];
 
 const DEGREES_TO_RADIANS = Math.PI / 180;
 const RADIANS_TO_DEGREES = 180 / Math.PI;
 
-class Geometry {
+export class Geometry {
   /**
    * Return the angle between position a and b in radians
    */
@@ -26,11 +24,11 @@ class Geometry {
   static moveWithHeading(current: Position, angle: number, distance: number): Position {
     const deltaX = Math.cos(angle) * distance;
     const deltaY = Math.sin(angle) * distance;
-    return [ current[0] + deltaX, current[1] + deltaY ]; // .map(to3Decimals);
+    return [current[0] + deltaX, current[1] + deltaY]; // .map(to3Decimals);
   }
 
   static translate(input: Position, dx: number, dy: number): Position {
-    return [ input[0] + dx, input[1] + dy ];
+    return [input[0] + dx, input[1] + dy];
   }
 
   static toRadians(degrees: number): number {
@@ -45,7 +43,3 @@ class Geometry {
 function to3Decimals(a) {
   return Math.floor(a * 1000) / 1000;
 }
-
-module.exports = {
-  Geometry
-};
